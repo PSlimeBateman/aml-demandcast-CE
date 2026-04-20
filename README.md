@@ -22,3 +22,8 @@ Target framing:
 - Target: trip count (demand) per zone per hour
 
 This prediction supports better short-term demand planning and forms the core supervised learning objective for the DemandCast pipeline.
+
+## Why Random Splits Are Not Appropriate for Demand Forecasting
+In machine learning, our validation strategy must mimic how the model will be used in production. In the real world, we train on past data to predict future events.
+
+If we used a random split (like train_test_split), we would randomly assign rows from late January into the training set, and rows from early January into the validation set. This causes Data Leakage (Look-ahead bias). The model would "know" about future demand spikes before predicting past ones. Furthermore, because we engineered lag features (like demand_lag_168h), our rows are sequentially dependent. A strict temporal split (Train: Weeks 1-3, Val: Week 4, Test: Future dates) is the only way to evaluate if the model can genuinely extrapolate future demand from historical patterns.
