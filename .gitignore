@@ -4,6 +4,7 @@ mlruns/
 *.parquet
 __pycache__/
 .venv/
+mlflow.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
