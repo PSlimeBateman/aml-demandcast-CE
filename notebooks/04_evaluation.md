@@ -10,7 +10,7 @@
 * **MAPE (Mean Absolute Percentage Error) = 58.53%:** On average, our predictions are off by 58.53% relative to the actual demand. If we expect 100 people to need a ride, our prediction could be off by about 59 people. *(Note: MAPE can be highly skewed by low-demand hours, as explained below).*
 
 ### *A Note on Handling Zero-Demand Hours (MAPE)*
-*Because MAPE calculates a percentage error by dividing by the actual demand, hours where a zone has exactly 0 trips cause a mathematical "division by zero" error. To handle this, I added a tiny constant value (epsilon = 0.001) to the actual demand in the denominator. This allows the calculation to complete without artificially inflating the error or dropping valid low-demand hours from our evaluation.*
+*Because MAPE calculates a percentage error by dividing by the actual demand, hours where a zone has exactly 0 trips cause a "division by zero" error. To handle this, I added a tiny constant value (epsilon = 0.001) to the actual demand in the denominator. This allows the calculation to complete without artificially inflating the error or dropping valid low-demand hours from our evaluation.*
 
 ---
 
